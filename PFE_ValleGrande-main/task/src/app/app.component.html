@@ -1,0 +1,18 @@
+<div class="app-container">
+  <div class="task-app">
+    <h1>
+      📋 Lista de Tareas
+      <span class="task-counter" *ngIf="totalTareas > 0">
+        Total: {{ totalTareas }} tarea{{ totalTareas !== 1 ? 's' : '' }}
+      </span>
+    </h1>
+    
+    <app-task-input (tareaAgregada)="agregarTarea($event)"></app-task-input>
+    
+    <app-task-list 
+      [tareas]="tareas"
+      [onEliminar]="eliminarTarea.bind(this)"
+      [onToggleCompletada]="toggleCompletada.bind(this)">
+    </app-task-list>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div *ngIf="tareas.length === 0" class="empty-message">
+  📝 No hay tareas registradas
+</div>
+
+<ul *ngIf="tareas.length > 0">
+  <li *ngFor="let tarea of tareas" [class.completada]="tarea.completada">
+    <div class="task-content">
+      <input 
+        type="checkbox" 
+        [checked]="tarea.completada"
+        (change)="onToggleCompletada(tarea.id)"
+        class="task-checkbox">
+      <span class="task-text">{{ tarea.nombre }}</span>
+    </div>
+    <button 
+      (click)="onEliminar(tarea.id)" 
+      class="delete-btn"
+      title="Eliminar tarea">
+      🗑️ Eliminar
+    </button>
+  </li>
+</ul>
